@@ -1,8 +1,10 @@
+import onLoad from './components/messages';
+
 import 'bootstrap';
 import '../styles/main.scss';
 
 const init = () => {
-  console.error('dope');
+  onLoad.getData();
 };
 
 init();
