@@ -1,5 +1,17 @@
 @import "~bootstrap/scss/bootstrap";
 
 body {
-  background-color: blue;
+  background-color: rgb(235, 235, 235);
+}
+
+.logo {
+  max-width: 100px;
+}
+.nav-item, .nav-link {
+  list-style-type: none;
+  color: #acb119;
+}
+
+.nav-link:hover, .nav-link:focus, .nav-link:active {
+  color: #7baf36;
 }
