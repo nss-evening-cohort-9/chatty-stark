@@ -1,0 +1,32 @@
+{
+  "friends": [{
+    "id": "friend1",
+    "imageUrl": "https://ca.slack-edge.com/T03F2SDTJ-UFA4DSCNQ-81dc1a95924d-48",
+    "friendName": "Jeressia Williamson",
+    "isAvailable": "true"
+    },
+    {
+      "id": "friend2",
+      "imageUrl": "https://ca.slack-edge.com/T03F2SDTJ-UFS9Q7LJG-5f21f3636e7e-48",
+      "friendName": "Lwam Tekie",
+      "isAvailable": "false"
+    },
+    {
+      "id": "friend3",
+      "imageUrl": "http://www.gstatic.com/tv/thumb/persons/589228/589228_v9_ba.jpg",
+      "friendName": "Mark Zuckerberg",
+      "isAvailable": "true"
+    },
+    {
+      "id": "friend4",
+      "imageUrl": "https://ca.slack-edge.com/T03F2SDTJ-UFA8UFS5A-4a27698cb6cf-48",
+      "friendName": "Sam Trejo",
+      "isAvailable": "true"
+    },
+    {
+      "id": "friend5",
+      "imageUrl": "https://ca.slack-edge.com/T03F2SDTJ-UFS5WJW68-97c4e988b6cf-48",
+      "friendName": "Sylvestre Luna",
+      "isAvailable": "false"
+    }]
+  }
