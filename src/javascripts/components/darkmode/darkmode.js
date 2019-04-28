@@ -14,6 +14,7 @@ function darkTheme() {
 function lightTheme() {
   document.querySelector('.dark-mode').style = '';
   document.querySelector('.dark-menu').style = '';
+  document.querySelector('.dropdown-item').style = '';
   document.querySelector('.dark-nav').style = '';
   document.querySelector('.dark-m-header').style = '';
   document.querySelector('.dark-m-body').style = '';
