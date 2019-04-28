@@ -4,6 +4,21 @@ body {
   background-color: #ebebeb;
 }
 
+#app {display: flex;
+}
+
+#messages {
+  display: flex;
+  flex-direction: column;
+  width:75%;
+}
+
+#friends {
+  display:flex;
+  flex-direction: column;
+  width:25%;
+}
+
 a, a:active {
   text-decoration: none;
   background-color: transparent;

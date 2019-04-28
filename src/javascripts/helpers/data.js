@@ -2,4 +2,6 @@ import axios from 'axios';
 
 const getMessagesData = () => axios.get('../db/messages.json');
 
-export default { getMessagesData };
+const getFriendsData = () => axios.get('../db/friends.json');
+
+export default { getMessagesData, getFriendsData };
