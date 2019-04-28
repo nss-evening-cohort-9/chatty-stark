@@ -1,4 +1,10 @@
+import onLoad from './components/messages';
+
 import 'bootstrap';
 import '../styles/main.scss';
 
-console.error('hi');
+const init = () => {
+  onLoad.getData();
+};
+
+init();
