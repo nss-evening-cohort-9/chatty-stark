@@ -1,4 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
+@import "../javascripts/components/darkmode/darkmode";
 
 body {
   background-color: #ebebeb;
@@ -14,4 +15,9 @@ body {
 
 .nav-link:hover, .nav-link:focus, .nav-link:active {
   color: #7baf36;
+}
+
+.modal-body {
+  justify-content: center;
+  text-align: center;
 }
