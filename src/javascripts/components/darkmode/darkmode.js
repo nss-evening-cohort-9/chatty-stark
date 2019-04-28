@@ -2,7 +2,6 @@ function darkTheme() {
   document.querySelector('.dark-mode, .dark-m-body').style = 'background-color: #303030 !important; color: white; border:none';
   document.querySelector('.dark-nav').style = 'background-color: #505050 !important; color: white; border:none';
   document.querySelector('.dropdown-item').style = 'background-color: #505050 !important; color: white; border:none';
-  document.querySelector('.show').style = 'padding: 0px;';
   document.querySelector('.dark-m-header').style = 'background-color: #505050 !important; color: white; border:none; border-radius: 0px;';
   document.querySelector('.dark-m-body').style = 'background-color: #303030 !important; color: white; border:none';
   document.querySelector('.dark-footer').style = 'background-color: #505050 !important; color: white; border:none;border-radius: 0px';
