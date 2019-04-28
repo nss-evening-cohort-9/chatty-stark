@@ -3,15 +3,16 @@ import util from '../helpers/util';
 
 let messages = [];
 
+
 const domStringBuilder = (array) => {
   let domString = '';
   array.forEach((item) => {
-    domString += `<div class="message" id=message${item.id}>`;
+    domString += `<div class="message" id=${item.id}>`;
     domString += '  <div class="message-heading d-flex align-items-center">';
     domString += `    <img height="25" width="25" src=${item.imageUrl}>`;
     domString += `    <div>${item.userName}</div>`;
     domString += '    <div>1:00</div>';
-    domString += '    <i class="fas fa-trash-alt">X</i>';
+    domString += `    <i id="delete" class="${item.id} fas fa-trash-alt"></i>`;
     domString += '  </div>';
     domString += '  <div class="message-body">';
     domString += `    <div>${item.msg}</div>`;
@@ -19,6 +20,15 @@ const domStringBuilder = (array) => {
     domString += '</div>';
   });
   util.printToDom('messages', domString);
+};
+
+const deleteMessage = (event) => {
+  if (event.target.id === 'delete') {
+    const criteria = event.target.classList[0];
+    const tempArray = messages.filter(message => message.id !== criteria);
+    messages = tempArray;
+    domStringBuilder(messages);
+  }
 };
 
 const getData = () => {
@@ -33,4 +43,4 @@ const getData = () => {
     });
 };
 
-export default { domStringBuilder, getData };
+export default { domStringBuilder, getData, deleteMessage };

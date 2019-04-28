@@ -1,30 +1,30 @@
 {
 "messages": [{
-  "id": 1,
+  "id": "message1",
   "imageUrl": "https://ca.slack-edge.com/T03F2SDTJ-UFA4DSCNQ-81dc1a95924d-48",
   "userName": "Jeressia W",
   "msg": "Hello Test"
   },
   {
-  "id": 2,
+  "id": "message2",
   "imageUrl": "https://ca.slack-edge.com/T03F2SDTJ-UFA8UFS5A-4a27698cb6cf-48",
   "userName": "Sam T",
   "msg": "Hello Test"
   },
   {
-    "id": 3,
+    "id": "message3",
     "imageUrl": "https://ca.slack-edge.com/T03F2SDTJ-UFS9Q7LJG-5f21f3636e7e-48",
     "userName": "Lwam T",
     "msg": "Hello Test"
   },
   {
-    "id": 4,
+    "id": "message4",
     "imageUrl": "https://ca.slack-edge.com/T03F2SDTJ-UFS5WJW68-97c4e988b6cf-48",
     "userName": "Silvestre L",
     "msg": "Hello Test"
   },
   {
-    "id": 5,
+    "id": "message5",
     "imageUrl": "https://ca.slack-edge.com/T03F2SDTJ-UFS5WJW68-97c4e988b6cf-48",
     "userName": "Silvestre L",
     "msg": "Hello Test"
