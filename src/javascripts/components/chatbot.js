@@ -4,10 +4,21 @@ let cannedAliases = [];
 
 const aliasCheck = () => {
   const inputValue = document.getElementById('new-message').value;
+  let valueCheck = false;
+  cannedAliases.forEach((item) => {
+    if (item.alias === inputValue) {
+      valueCheck = true;
+    }
+  });
+  return valueCheck;
+};
+
+const getBotResponse = () => {
+  const inputValue = document.getElementById('new-message').value;
   let chatbotMessage;
   cannedAliases.forEach((item) => {
     switch (inputValue) {
-      case '!joke':
+      case '!joke' && item.alias:
         chatbotMessage = item;
         break;
       case item.alias:
@@ -30,4 +41,4 @@ const getData = () => {
     });
 };
 
-export default { aliasCheck, getData };
+export default { aliasCheck, getData, getBotResponse };

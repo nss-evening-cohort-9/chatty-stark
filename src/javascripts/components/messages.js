@@ -24,8 +24,8 @@ const domStringBuilder = (array) => {
 };
 
 const addMessage = () => {
-  if (bot.aliasCheck() !== undefined) {
-    messages.push(bot.aliasCheck());
+  if (bot.aliasCheck()) {
+    messages.push(bot.getBotResponse());
     domStringBuilder(messages);
     document.getElementById('new-message').value = '';
   }
