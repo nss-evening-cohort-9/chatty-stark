@@ -11,7 +11,7 @@ const domStringBuilder = (array) => {
     domString += `    <img height="25" width="25" src=${item.imageUrl}>`;
     domString += `    <div>${item.userName}</div>`;
     domString += '    <div>1:00</div>';
-    domString += '    <i class="fas fa-trash-alt"></i>';
+    domString += '    <i class="fas fa-trash-alt">X</i>';
     domString += '  </div>';
     domString += '  <div class="message-body">';
     domString += `    <div>${item.msg}</div>`;
