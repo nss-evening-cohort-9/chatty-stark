@@ -9,6 +9,7 @@ function darkTheme() {
   document.querySelector('.btn-dark').style = 'color: black !important;';
   document.querySelector('.btn1').style = 'color: black !important;';
   document.querySelector('.btn2').style = 'color: black !important;';
+  document.querySelector('.friends-dark').style = 'background-color: #252525 !important; color: white;';
 }
 
 function lightTheme() {
@@ -20,6 +21,7 @@ function lightTheme() {
   document.querySelector('.dark-m-body').style = '';
   document.querySelector('.dark-footer').style = '';
   document.querySelector('.btn-dark').style = 'color: black !important;';
+  document.querySelector('.friends-dark').style = 'background-color: #fff !important';
 }
 
 const themeButtons = () => {
