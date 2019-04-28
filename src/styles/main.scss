@@ -1,22 +1,20 @@
 @import "~bootstrap/scss/bootstrap";
+@import "../javascripts/components/friends/friends.scss";
 
 body {
   background-color: #ebebeb;
 }
 
-#app {display: flex;
+#app {
+  display: flex;
+  max-width: 1980px;
+  padding:0px;
 }
 
 #messages {
   display: flex;
   flex-direction: column;
   width:75%;
-}
-
-#friends {
-  display:flex;
-  flex-direction: column;
-  width:25%;
 }
 
 a, a:active {

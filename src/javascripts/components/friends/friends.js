@@ -4,16 +4,25 @@ import util from '../../helpers/util';
 let friends = [];
 
 const domStringBuilder = (array) => {
-  let domString = '';
+  let domString = '<h5 class="friends-title">Who\'s Online?</h5>';
   array.forEach((friend) => {
     domString += `<div class="friendslist" id=${friend.id}>`;
-    domString += '  <div class="message-heading d-flex align-items-center">';
-    domString += `    <img height="25" width="25" src=${friend.imageUrl}>`;
-    domString += `    <div>${friend.friendName}</div>`;
-    domString += '  </div>';
-    domString += '</div>';
+    domString += '  <div class="friends-text d-flex">';
+    if (`${friend.isAvailable}` === 'true') {
+      domString += ' <span class ="activedot"></span>';
+      domString += `<img height="25" width="25" src=${friend.imageUrl} class="friend-image">`;
+      domString += `    <div>${friend.friendName}</div>`;
+      domString += '  </div>';
+      domString += '</div>';
+    } else {
+      domString += ' <span class ="dot"></span>';
+      domString += `<img height="25" width="25" src=${friend.imageUrl} class="friend-image">`;
+      domString += `    <div>${friend.friendName}</div>`;
+      domString += '  </div>';
+      domString += '</div>';
+    }
   });
-  util.printToDom('messages', domString);
+  util.printToDom('friends', domString);
 };
 
 const getFriends = () => {
