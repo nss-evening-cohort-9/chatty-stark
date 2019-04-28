@@ -22,6 +22,7 @@ const domStringBuilder = (array) => {
       domString += '</div>';
     }
   });
+  domString += '<img class="friends-logo" src="../../../../assets/starklogo.png">';
   util.printToDom('friends', domString);
 };
 
