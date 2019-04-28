@@ -16,8 +16,28 @@ body {
 .nav-link:hover, .nav-link:focus, .nav-link:active {
   color: #7baf36;
 }
-
-.modal-body {
-  justify-content: center;
+.modal-dialog {
+  padding: 10px;
   text-align: center;
+}
+
+.modal-text {
+  padding: 10px;
+  padding-bottom:0px;
+  text-align: center;
+}
+.btn1 {
+  background-color: #d2e620 !important; 
+  color: white !important; 
+  border:none;
+}
+
+.btn2 {
+  background-color: #aebe1a !important; 
+  color: white !important; 
+  border:none;
+}
+.btn-group {
+  text-align: center;
+  justify-content: center;
 }
