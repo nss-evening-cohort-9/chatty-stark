@@ -5,6 +5,12 @@ body {
   background-color: #ebebeb;
 }
 
+a, a:active {
+  text-decoration: none;
+  background-color: transparent;
+}
+
+
 .logo {
   max-width: 100px;
 }
@@ -26,16 +32,18 @@ body {
   padding-bottom:0px;
   text-align: center;
 }
-.btn1 {
+.btn1, .btn1:focus, .btn1:active {
   background-color: #d2e620 !important; 
   color: white !important; 
   border:none;
+  outline: none;
 }
 
-.btn2 {
+.btn2, .btn2:focus, .btn2:active {
   background-color: #aebe1a !important; 
   color: white !important; 
   border:none;
+  outline: none;
 }
 .btn-group {
   text-align: center;
