@@ -19,7 +19,7 @@ function lightTheme() {
   document.querySelector('.dark-m-header').style = '';
   document.querySelector('.dark-m-body').style = '';
   document.querySelector('.dark-footer').style = '';
-  document.querySelector('.btn-dark').style = '';
+  document.querySelector('.btn-dark').style = 'color: black !important;';
 }
 
 const themeButtons = () => {
