@@ -1,0 +1,37 @@
+{
+  "cannedAliases": [{
+    "id": "canned1",
+    "imageUrl": "../assets/starkbot.png",
+    "userName": "Starkbot",
+    "alias": "!help",
+    "msg": "Hello, I am Starkbot. What would you like help with? You can say !commands to view a list of commands, or !joke if you want me to tell you a joke. I am very funny!"
+    },
+    {
+    "id": "canned2",
+    "imageUrl": "../assets/starkbot.png",
+    "userName": "Starkbot",
+    "alias": "!commands",
+    "msg": "Here is a list of my commands !help, !commands, !joke, !insult, and !info"
+    },
+    {
+      "id": "canned3",
+      "imageUrl": "../assets/starkbot.png",
+      "userName": "Starkbot",
+      "alias": "!joke",
+      "msg": "A funny joke!"
+    },
+    {
+      "id": "canned4",
+      "imageUrl": "../assets/starkbot.png",
+      "userName": "Starkbot",
+      "alias": "!insult",
+      "msg": "You are a rotten egg!"
+    },
+    {
+      "id": "canned5",
+      "imageUrl": "../assets/starkbot.png",
+      "userName": "Starkbot",
+      "alias": "!info",
+      "msg": "Welcome to starkTalk, this chat app will put Mark Zuckerberg out of business. Just look at my friendslist even he is using this app!"
+    }]
+  }

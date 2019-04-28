@@ -2,4 +2,6 @@ import axios from 'axios';
 
 const getMessagesData = () => axios.get('../db/messages.json');
 
-export default { getMessagesData };
+const getChatbotData = () => axios.get('../db/chatbot.json');
+
+export default { getMessagesData, getChatbotData };
