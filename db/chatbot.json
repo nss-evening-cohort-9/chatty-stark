@@ -4,14 +4,14 @@
     "imageUrl": "../assets/starkbot.png",
     "userName": "Starkbot",
     "alias": "!help",
-    "msg": "Hello, I am Starkbot. What would you like help with? You can say !commands to view a list of commands, or !joke if you want me to tell you a joke. I am very funny!"
+    "msg": "Hello, I am Starkbot. What would you like help with? You can say <b>!commands</b> to view a list of commands, or <b>!joke</b> if you want me to tell you a joke. I am very funny!"
     },
     {
     "id": "canned2",
     "imageUrl": "../assets/starkbot.png",
     "userName": "Starkbot",
     "alias": "!commands",
-    "msg": "Here is a list of my commands !help, !commands, !joke, !insult, and !info"
+    "msg": "Here is a list of my commands <b>!help</b>, <b>!commands</b>, <b>!joke</b>, <b>!insult</b>, and <b>!info</b>"
     },
     {
       "id": "canned3",
