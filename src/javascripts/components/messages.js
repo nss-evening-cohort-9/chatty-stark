@@ -23,7 +23,8 @@ const domStringBuilder = (array) => {
   util.printToDom('messages', domString);
 };
 
-const addMessage = () => {
+const addMessage = (event) => {
+  event.preventDefault();
   if (bot.aliasCheck()) {
     messages.push(bot.getBotResponse());
     domStringBuilder(messages);
