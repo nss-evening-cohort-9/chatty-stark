@@ -1,5 +1,6 @@
 import data from '../helpers/data';
 import util from '../helpers/util';
+import bot from './chatbot';
 
 let messages = [];
 
@@ -20,6 +21,15 @@ const domStringBuilder = (array) => {
     domString += '</div>';
   });
   util.printToDom('messages', domString);
+};
+
+const addMessage = (event) => {
+  event.preventDefault();
+  if (bot.aliasCheck()) {
+    messages.push(bot.getBotResponse());
+    domStringBuilder(messages);
+    document.getElementById('new-message').value = '';
+  }
 };
 
 const deleteMessage = (event) => {
@@ -43,4 +53,9 @@ const getData = () => {
     });
 };
 
-export default { domStringBuilder, getData, deleteMessage };
+export default {
+  domStringBuilder,
+  getData,
+  addMessage,
+  deleteMessage,
+};
