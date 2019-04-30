@@ -48,6 +48,13 @@ const addMessage = (event) => {
 
   if (bot.aliasCheck()) {
     messages.push(bot.getBotResponse());
+    const msgWithTime = [];
+    messages.forEach((msg) => {
+      const msgCopy = msg;
+      msgCopy.timeStamp = addTimeStamp();
+      msgWithTime.push(msgCopy);
+    });
+    messages = msgWithTime;
     domStringBuilder(messages);
     document.getElementById('new-message').value = '';
   }
