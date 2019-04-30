@@ -11,6 +11,7 @@ const addTimeStamp = () => {
   return time;
 };
 
+
 const domStringBuilder = (array) => {
   let domString = '';
   array.forEach((item) => {
@@ -42,18 +43,16 @@ const addMessage = (event) => {
     msg: newMessageInput.value,
   };
   messages.push(newMessage);
-  if (messages.length > 20) {
+
+  if (messages.length > 10) {
     const tempMsg = messages.slice(1);
-    console.error(tempMsg);
     messages = tempMsg;
     domStringBuilder(messages);
-    console.error(messages.length);
   } else {
     domStringBuilder(messages);
-    console.error(messages.length);
   }
+
   counter += 1;
-  console.error(messages.length);
 
   if (bot.aliasCheck()) {
     messages.push(bot.getBotResponse());
@@ -64,8 +63,16 @@ const addMessage = (event) => {
       msgWithTime.push(msgCopy);
     });
     messages = msgWithTime;
-    domStringBuilder(messages);
+
+    if (messages.length > 10) {
+      const tempMsg = messages.slice(1);
+      messages = tempMsg;
+      domStringBuilder(messages);
+    } else {
+      domStringBuilder(messages);
+    }
   }
+
   document.getElementById('new-message').value = '';
 };
 const clearMessages = () => {
