@@ -1,8 +1,8 @@
 import moment from 'moment';
 
-import data from '../helpers/data';
-import util from '../helpers/util';
-import bot from './chatbot';
+import data from '../../helpers/data';
+import util from '../../helpers/util';
+import bot from '../chatbot';
 
 let messages = [];
 
@@ -15,7 +15,7 @@ addTimeStamp();
 const domStringBuilder = (array) => {
   let domString = '';
   array.forEach((item) => {
-    domString += `<div class="message-box" id=${item.id}>`;
+    domString += `<div class="message shadow-sm" id=${item.id}>`;
     domString += '  <div class="message-heading d-flex align-items-center">';
     domString += `    <img height="25" width="25" src=${item.imageUrl} class="pic">`;
     domString += `    <div class="msg-name">${item.userName}</div>`;
@@ -83,6 +83,7 @@ const getData = () => {
       console.error(error);
     });
 };
+
 
 export default {
   domStringBuilder,

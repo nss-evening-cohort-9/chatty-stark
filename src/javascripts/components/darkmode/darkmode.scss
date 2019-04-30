@@ -10,6 +10,19 @@
   #friends{
     background-color: #252525 !important; color: white;
   }
+  #messages {
+    .message {
+      background-color: rgb(93, 93, 93);
+      margin-bottom: 10px;
+      border-radius: 5px 5px 5px 5px;
+    }
+    .message-heading {
+      background-color: #797c11;
+      color: #ffffff;
+      padding: 10px;
+      border-radius: 5px 5px 0px 0px;
+    }
+  }
   .modal-header{
     border-radius: 0px;
   }
