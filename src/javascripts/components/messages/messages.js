@@ -10,7 +10,6 @@ const addTimeStamp = () => {
   const time = moment().format('LT');
   return time;
 };
-addTimeStamp();
 
 const domStringBuilder = (array) => {
   let domString = '';
@@ -30,14 +29,6 @@ const domStringBuilder = (array) => {
   util.printToDom('messages', domString);
 };
 
-const msgLimits = () => {
-  const currentL = messages;
-  const total = currentL.length;
-  if (total === 10) {
-    console.error(total);
-  }
-};
-
 const addMessage = (event) => {
   event.preventDefault();
   let counter = 6;
@@ -51,8 +42,16 @@ const addMessage = (event) => {
     msg: newMessageInput.value,
   };
   messages.push(newMessage);
-  domStringBuilder(messages);
+  if (messages.length >= 8) {
+    const msg1 = messages.slice(1);
+    console.error(msg1);
+    messages = msg1;
+    domStringBuilder(messages);
+  } else {
+    domStringBuilder(messages);
+  }
   counter += 1;
+  console.error(messages.length);
 
   if (bot.aliasCheck()) {
     messages.push(bot.getBotResponse());
@@ -65,7 +64,6 @@ const addMessage = (event) => {
     messages = msgWithTime;
     domStringBuilder(messages);
   }
-  msgLimits();
   document.getElementById('new-message').value = '';
 };
 const clearMessages = () => {
