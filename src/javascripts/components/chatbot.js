@@ -15,14 +15,13 @@ const aliasCheck = () => {
 
 const getBotResponse = () => {
   const inputValue = document.getElementById('new-message').value;
-  let chatbotMessage;
+  const chatbotMessage = {};
   cannedAliases.forEach((item) => {
     switch (inputValue) {
-      case '!joke' && item.alias:
-        chatbotMessage = item;
-        break;
       case item.alias:
-        chatbotMessage = item;
+        chatbotMessage.imageUrl = item.imageUrl;
+        chatbotMessage.userName = item.userName;
+        chatbotMessage.msg = item.msg;
         break;
       default:
     }
