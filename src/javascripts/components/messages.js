@@ -1,18 +1,25 @@
+import moment from 'moment';
+
 import data from '../helpers/data';
 import util from '../helpers/util';
 import bot from './chatbot';
 
 let messages = [];
 
+const addTimeStamp = () => {
+  const time = moment().format('LT');
+  return time;
+};
+addTimeStamp();
 
 const domStringBuilder = (array) => {
   let domString = '';
   array.forEach((item) => {
-    domString += `<div class="message" id=${item.id}>`;
+    domString += `<div class="message-box" id=${item.id}>`;
     domString += '  <div class="message-heading d-flex align-items-center">';
-    domString += `    <img height="25" width="25" src=${item.imageUrl}>`;
-    domString += `    <div>${item.userName}</div>`;
-    domString += '    <div>1:00</div>';
+    domString += `    <img height="25" width="25" src=${item.imageUrl} class="pic">`;
+    domString += `    <div class="msg-name">${item.userName}</div>`;
+    domString += `    <div class="time" id="time">${item.timeStamp}</div>`;
     domString += `    <i id="delete" class="${item.id} fas fa-trash-alt"></i>`;
     domString += '  </div>';
     domString += '  <div class="message-body">';
@@ -32,7 +39,7 @@ const addMessage = (event) => {
     id: `message${counter}`,
     imageUrl: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/15/08/jon-snow-got.jpg',
     userName: 'Jon Snow',
-    timeStamp: '',
+    timeStamp: addTimeStamp(),
     msg: newMessageInput.value,
   };
   messages.push(newMessage);
@@ -41,6 +48,13 @@ const addMessage = (event) => {
 
   if (bot.aliasCheck()) {
     messages.push(bot.getBotResponse());
+    const msgWithTime = [];
+    messages.forEach((msg) => {
+      const msgCopy = msg;
+      msgCopy.timeStamp = addTimeStamp();
+      msgWithTime.push(msgCopy);
+    });
+    messages = msgWithTime;
     domStringBuilder(messages);
   }
   document.getElementById('new-message').value = '';
