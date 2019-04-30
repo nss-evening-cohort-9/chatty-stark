@@ -1,0 +1,23 @@
+@media only screen and (max-width: 1024px) {
+  #messages{
+    height: 86vh;
+    .input-box{
+      display: flex;
+      width:60vw;
+      flex-direction: column;
+      margin-right: 0px;
+      margin-left:5px;
+    }
+    #clear-messages{
+      width: 120px;
+      height:4vh;
+      margin:0 auto;
+      margin-left: 0px;
+      padding: 2px;
+    }
+  }
+  #friends  {
+    height: 100vh;
+  }
+
+}
