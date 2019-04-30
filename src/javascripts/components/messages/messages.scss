@@ -8,6 +8,8 @@
  height: 73vh;
  width:99%;
  margin: 5px;
+ overflow: hidden;
+ overflow-y: scroll;
  .message {
    background-color: white;
    margin-bottom: 10px;
@@ -26,6 +28,7 @@
   width:65vw;
   flex-direction: column;
   margin-right: 0px;
+  margin-left:5px;
 }
 #clear-messages{
   width: 120px;

@@ -84,6 +84,7 @@ const getData = () => {
     });
 };
 
+
 export default {
   domStringBuilder,
   getData,
