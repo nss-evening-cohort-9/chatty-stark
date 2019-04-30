@@ -42,10 +42,13 @@ const addMessage = (event) => {
   if (bot.aliasCheck()) {
     messages.push(bot.getBotResponse());
     domStringBuilder(messages);
-    document.getElementById('new-message').value = '';
   }
+  document.getElementById('new-message').value = '';
 };
-
+const clearMessages = () => {
+  messages = [];
+  domStringBuilder(messages);
+};
 const deleteMessage = (event) => {
   if (event.target.id === 'delete') {
     const criteria = event.target.classList[0];
@@ -72,4 +75,5 @@ export default {
   getData,
   addMessage,
   deleteMessage,
+  clearMessages,
 };
