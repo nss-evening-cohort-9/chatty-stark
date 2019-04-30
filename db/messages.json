@@ -3,30 +3,35 @@
   "id": "message1",
   "imageUrl": "https://ca.slack-edge.com/T03F2SDTJ-UFA4DSCNQ-81dc1a95924d-48",
   "userName": "Jeressia W",
+  "timeStamp": "6:30 PM",
   "msg": "Hello Test"
   },
   {
   "id": "message2",
   "imageUrl": "https://ca.slack-edge.com/T03F2SDTJ-UFA8UFS5A-4a27698cb6cf-48",
   "userName": "Sam T",
+  "timeStamp": "6:35 PM",
   "msg": "Hello Test"
   },
   {
     "id": "message3",
     "imageUrl": "https://ca.slack-edge.com/T03F2SDTJ-UFS9Q7LJG-5f21f3636e7e-48",
     "userName": "Lwam T",
+    "timeStamp": "6:38 PM",
     "msg": "Hello Test"
   },
   {
     "id": "message4",
     "imageUrl": "https://ca.slack-edge.com/T03F2SDTJ-UFS5WJW68-97c4e988b6cf-48",
     "userName": "Silvestre L",
+    "timeStamp": "6:40 PM",
     "msg": "Hello Test"
   },
   {
     "id": "message5",
     "imageUrl": "https://ca.slack-edge.com/T03F2SDTJ-UFS5WJW68-97c4e988b6cf-48",
     "userName": "Silvestre L",
+    "timeStamp": "6:45 PM",
     "msg": "Hello Test"
   }]
 }
