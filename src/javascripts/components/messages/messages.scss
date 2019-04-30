@@ -12,12 +12,17 @@
  overflow-y: scroll;
  .message {
    background-color: white;
-   margin-bottom: 10px;
+   margin-bottom: 20px;
    border-radius: 5px 5px 5px 5px;
  }
  .message-body{
    padding: 10px;
   
+ }
+ .card-footer{
+   padding: 2px;
+   text-align: center;
+   background-color: #dfdede;
  }
 }
 .input-group{

@@ -25,6 +25,7 @@ const domStringBuilder = (array) => {
     domString += '  <div class="message-body">';
     domString += `    <div>${item.msg}</div>`;
     domString += '  </div>';
+    domString += '  <div class="card-footer">Like & Dislike Goes here</div>';
     domString += '</div>';
   });
   util.printToDom('messages', domString);
@@ -84,6 +85,9 @@ const getData = () => {
     });
 };
 
+function scrollToBottom() {
+  document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
+}
 
 export default {
   domStringBuilder,
@@ -91,4 +95,5 @@ export default {
   addMessage,
   deleteMessage,
   clearMessages,
+  scrollToBottom,
 };
