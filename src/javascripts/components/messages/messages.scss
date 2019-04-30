@@ -1,0 +1,45 @@
+#app {
+  display: flex;
+  flex-direction: column;
+  width:75%;
+  justify-content: space-between;
+}
+#messages {
+ height: 73vh;
+ width:99%;
+ margin: 5px;
+ overflow: hidden;
+ overflow-y: scroll;
+ .message {
+   background-color: white;
+   margin-bottom: 10px;
+   border-radius: 5px 5px 5px 5px;
+ }
+ .message-body{
+   padding: 10px;
+  
+ }
+}
+.input-group{
+  display: flex;
+}
+.input-box{
+  display: flex;
+  width:65vw;
+  flex-direction: column;
+  margin-right: 0px;
+  margin-left:5px;
+}
+#clear-messages{
+  width: 120px;
+  height:4vh;
+  margin:0 auto;
+  margin-left: 0px;
+  padding: 2px;
+}
+.message-heading {
+  background-color: #acb119;
+  color: #404040;
+  padding: 10px;
+  border-radius: 5px 5px 0px 0px;
+}

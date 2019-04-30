@@ -1,4 +1,4 @@
-import onLoad from './components/messages';
+import onLoad from './components/messages/messages';
 import friendslist from './components/friends/friends';
 import themes from './components/darkmode/darkmode';
 import events from './helpers/attach-events';
