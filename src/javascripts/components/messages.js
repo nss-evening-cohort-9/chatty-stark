@@ -30,6 +30,14 @@ const domStringBuilder = (array) => {
   util.printToDom('messages', domString);
 };
 
+const msgLimits = () => {
+  const currentL = messages;
+  const total = currentL.length;
+  if (total === 10) {
+    console.error(total);
+  }
+};
+
 const addMessage = (event) => {
   event.preventDefault();
   let counter = 6;
@@ -57,6 +65,7 @@ const addMessage = (event) => {
     messages = msgWithTime;
     domStringBuilder(messages);
   }
+  msgLimits();
   document.getElementById('new-message').value = '';
 };
 const clearMessages = () => {
