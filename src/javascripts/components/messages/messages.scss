@@ -1,0 +1,12 @@
+#app {
+  display: flex;
+  flex-direction: column;
+  width:75%;
+}
+#messages {
+ background-color: #f0f0f0;
+ height: 78vh;
+}
+.message {
+  background-color: green;
+}

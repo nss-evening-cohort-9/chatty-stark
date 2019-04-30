@@ -1,6 +1,6 @@
-import data from '../helpers/data';
-import util from '../helpers/util';
-import bot from './chatbot';
+import data from '../../helpers/data';
+import util from '../../helpers/util';
+import bot from '../chatbot';
 
 let messages = [];
 

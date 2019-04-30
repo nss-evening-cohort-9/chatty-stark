@@ -1,4 +1,4 @@
-import messages from '../components/messages';
+import messages from '../components/messages/messages';
 
 const attachEvents = () => {
   document.getElementById('messages').addEventListener('click', messages.deleteMessage);
