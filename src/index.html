@@ -8,13 +8,13 @@
       <link rel="icon" href="../favicon.ico" />
       <title>starkTALK</title>
     </head>
-    <body class="dark-mode">
+    <body id="dark">
       <!-- navbar -->
-      <nav class="navbar navbar-light bg-light sticky-top dark-nav large-text">
+      <nav class="navbar navbar-light bg-light sticky-top large-text" id="dark">
         <a class="navbar-brand"><img class="logo" src="../assets/starklogo.png"></a>
-        <li class="nav-item dropdown mr-sm-2 dark-mode">
+        <li class="nav-item dropdown mr-sm-2">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
-          <div class="dropdown-menu dark-menu shadow-sm" aria-labelledby="navbarDropdownMenuLink">
+          <div class="dropdown-menu shadow-sm" aria-labelledby="navbarDropdownMenuLink" id="dark">
             <a class="dropdown-item" href="#" id="settings" data-toggle="modal" data-target="#basicModal">Accessibility</a>
           </div>
         </li>
@@ -28,7 +28,7 @@
           <input id="new-message" type="text" autocomplete="off" placeholder="Message" title="type !help for Starkbot">
           <label for="new-message" class="text-right text-muted text-small">!help for Starkbot</label>
         </form>
-          <div id="friends" class="friends-dark"></div>
+          <div id="friends"></div>
       </div>
       <!-- /app content -->
 
@@ -36,13 +36,13 @@
       <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header dark-m-header">
+            <div class="modal-header" id="dark">
               <h4 class="modal-title" id="myModalLabel">Accessibility</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
             </div>
-            <div class="modal-body dark-m-body">
+            <div class="modal-body" id="dark">
               <h5 class="modal-text"> Improve readability with increased color contrast.</h5>
               <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <button class="btn1 btn-secondary active" id="light-btn"> Light Mode (Standard)</button>
@@ -58,7 +58,7 @@
                   </button>
               </div>
             </div>
-            <div class="modal-footer dark-footer">
+            <div class="modal-footer" id="dark">
               <button type="button" class="btn1 btn-dark" data-dismiss="modal">Close</button>
             </div>
           </div>
