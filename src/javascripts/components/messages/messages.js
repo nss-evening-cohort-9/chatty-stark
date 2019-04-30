@@ -8,7 +8,7 @@ let messages = [];
 const domStringBuilder = (array) => {
   let domString = '';
   array.forEach((item) => {
-    domString += `<div class="message" id=${item.id}>`;
+    domString += `<div class="message shadow-sm" id=${item.id}>`;
     domString += '  <div class="message-heading d-flex align-items-center">';
     domString += `    <img height="25" width="25" src=${item.imageUrl}>`;
     domString += `    <div>${item.userName}</div>`;
