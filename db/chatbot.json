@@ -4,7 +4,7 @@
     "imageUrl": "../assets/starkbot.png",
     "userName": "Starkbot",
     "alias": "!help",
-    "msg": "Hello, I am Starkbot. What would you like help with? You can say <b>!commands</b> to view a list of commands, or <b>!joke</b> if you want me to tell you a joke. I am very funny!"
+    "msg": "What would you like help with? You can say <b>!commands</b> to view a list of commands, or <b>!joke</b> if you want me to tell you a joke. I am very funny!"
     },
     {
     "id": "canned2",

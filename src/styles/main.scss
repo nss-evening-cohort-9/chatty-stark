@@ -3,9 +3,11 @@
 @import "../javascripts/components/darkmode/darkmode.scss";
 @import "../javascripts/components/messages/messages.scss";
 @import "../styles/responsive.scss";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 body {
   background-color: #ebebeb;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .text-small {
