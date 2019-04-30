@@ -42,13 +42,15 @@ const addMessage = (event) => {
     msg: newMessageInput.value,
   };
   messages.push(newMessage);
-  if (messages.length >= 8) {
-    const msg1 = messages.slice(1);
-    console.error(msg1);
-    messages = msg1;
+  if (messages.length > 20) {
+    const tempMsg = messages.slice(1);
+    console.error(tempMsg);
+    messages = tempMsg;
     domStringBuilder(messages);
+    console.error(messages.length);
   } else {
     domStringBuilder(messages);
+    console.error(messages.length);
   }
   counter += 1;
   console.error(messages.length);
