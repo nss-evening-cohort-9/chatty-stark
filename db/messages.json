@@ -29,9 +29,9 @@
   },
   {
     "id": "message5",
-    "imageUrl": "https://ca.slack-edge.com/T03F2SDTJ-UFS5WJW68-97c4e988b6cf-48",
-    "userName": "Silvestre L",
+    "imageUrl": "../assets/starkbot.png",
+    "userName": "StarkBot",
     "timeStamp": "6:45 PM",
-    "msg": "Hello Test"
+    "msg": "Hello! Welcome to starkTALK! Begin typing in the box below and press return to submit. Type '!help' for more help."
   }]
 }

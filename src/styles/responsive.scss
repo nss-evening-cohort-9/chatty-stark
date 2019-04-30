@@ -1,12 +1,16 @@
 @media only screen and (max-width: 1024px) {
   #messages{
     height: 86vh;
-    .input-box{
+    input#newmessage{
       display: flex;
       width:60vw;
       flex-direction: column;
       margin-right: 0px;
       margin-left:5px;
+      input[type=text] {
+        border: 2px solid #aebe1a;
+        border-radius: 4px;
+      }
     }
     #clear-messages{
       width: 120px;
@@ -18,6 +22,116 @@
   }
   #friends  {
     height: 100vh;
+    font-size: 1.5vh;
+  }
+
+}
+@media only screen and (max-width: 768px) {
+  #messages{
+    height: 78vh;
+    width:74vw;
+    justify-content: center;
+  }
+  .input-box{
+    display: flex;
+    width: 74vw;
+    flex-direction: column;
+    margin-left:5px;
+    margin-bottom: 5px;
+    position: fixed;
+    bottom:20px;
+    input[type=text] {
+      border: 2px solid #aebe1a;
+      border-radius: 4px;
+    }
+  }
+  #clear-messages{
+    width: 100px;
+    height:4vh;
+    padding: 2px;
+    border-radius: 5px;
+    margin-left: 3px;
+    position: fixed;
+    bottom:5px;
+    left:30%;
+  }
+
+  #friends  {
+    height: 100vh;
+    font-size: 1.5vh;
+  }
+
+}
+@media only screen and (max-width: 600px) {
+  #messages{
+    height: 78vh;
+    width:97vw;
+    justify-content: center;
+  }
+  .input-group{
+    display: flex;
+    width: 600px;
+    flex-direction: column;
+    margin-left:5px;
+    position: fixed;
+    bottom:20px;
+    justify-content: center;
+    input[type=text] {
+      border: 2px solid #aebe1a;
+      border-radius: 4px;
+    }
+  }
+  #clear-messages{
+    width: 100px;
+    height:4vh;
+    padding: 2px;
+    border-radius: 5px;
+    margin-left: 3px;
+    position: fixed;
+    bottom:5px;
+    right: 5px;
+    margin:0 auto;
+    margin-left: 5px;
+  }
+
+  #friends  {
+    display:none;
+  }
+
+}
+
+@media only screen and (min-width: 375px) and (max-width: 411px) {
+  #messages{
+    height: 70vh;
+    width:97vw;
+    justify-content: center;
+  }
+  .input-box{
+    display: flex;
+    width: 310px;
+    flex-direction: column;
+    position: fixed;
+    bottom:20px;
+    input[type=text] {
+      border: 2px solid #aebe1a;
+      border-radius: 4px;
+    }
+  }
+  #clear-messages{
+    width: 100px;
+    height:4vh;
+    padding: 2px;
+    border-radius: 5px;
+    margin-left: 3px;
+    position: fixed;
+    bottom:5px;
+    right: 5px;
+    margin:0 auto;
+    margin-left: 5px;
+  }
+
+  #friends  {
+    display:none;
   }
 
 }
