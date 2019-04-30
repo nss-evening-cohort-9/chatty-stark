@@ -7,7 +7,6 @@ import bot from './components/chatbot';
 import 'bootstrap';
 import '../styles/main.scss';
 
-
 const init = () => {
   onLoad.getData();
   friendslist.getFriends();

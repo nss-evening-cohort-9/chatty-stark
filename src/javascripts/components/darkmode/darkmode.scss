@@ -1,0 +1,22 @@
+
+.dark-mode {
+  background-color: #303030 !important; color: white; border:none;
+  .navbar, .modal-header, .modal-footer {
+    background-color: #505050 !important; color: white; border:none;
+  }
+  .dropdown-menu {
+    background-color: #808080 !important; color: white; border:none;
+  }
+  #friends{
+    background-color: #252525 !important; color: white;
+  }
+  .modal-header{
+    border-radius: 0px;
+  }
+  .modal-footer{
+    border-radius: 0px;
+  }
+  .modal-body{
+    background-color: #303030 !important; color: white; border:none;
+  }
+}
