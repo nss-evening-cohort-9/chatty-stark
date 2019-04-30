@@ -25,6 +25,20 @@ const domStringBuilder = (array) => {
 
 const addMessage = (event) => {
   event.preventDefault();
+  let counter = 6;
+
+  const newMessageInput = document.getElementById('new-message');
+  const newMessage = {
+    id: `message${counter}`,
+    imageUrl: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/15/08/jon-snow-got.jpg',
+    userName: 'Jon Snow',
+    timeStamp: '',
+    msg: newMessageInput.value,
+  };
+  messages.push(newMessage);
+  domStringBuilder(messages);
+  counter += 1;
+
   if (bot.aliasCheck()) {
     messages.push(bot.getBotResponse());
     domStringBuilder(messages);
