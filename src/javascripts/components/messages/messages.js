@@ -11,7 +11,7 @@ const addTimeStamp = () => {
   const time = moment().format('LT');
   return time;
 };
-addTimeStamp();
+
 
 const domStringBuilder = (array) => {
   let domString = '';
@@ -39,8 +39,17 @@ const addMessage = (inputValue) => {
     timeStamp: addTimeStamp(),
     msg: inputValue,
   };
+
   counter += 1;
   messages.push(newMessage);
+
+  if (messages.length > 20) {
+    const tempMsg = messages.slice(1);
+    messages = tempMsg;
+    domStringBuilder(messages);
+  } else {
+    domStringBuilder(messages);
+  }
 
   if (bot.aliasCheck()) {
     const botMessage = bot.getBotResponse();
@@ -48,8 +57,15 @@ const addMessage = (inputValue) => {
     botMessage.timeStamp = addTimeStamp();
     messages.push(botMessage);
     counter += 1;
+
+    if (messages.length > 20) {
+      const tempMsg = messages.slice(1);
+      messages = tempMsg;
+      domStringBuilder(messages);
+    } else {
+      domStringBuilder(messages);
+    }
   }
-  domStringBuilder(messages);
   document.getElementById('new-message').value = '';
 };
 
