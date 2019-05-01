@@ -14,10 +14,12 @@
     }
     #clear-messages{
       width: 120px;
-      height:4vh;
       margin:0 auto;
       margin-left: 0px;
       padding: 2px;
+      button{
+        height:auto;
+      }
     }
   }
   #friends  {

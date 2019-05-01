@@ -20,9 +20,10 @@
   
  }
  .card-footer{
-   padding: 2px;
+   padding: 0px;
    text-align: center;
-   background-color: #dfdede;
+   background-color: #acb119;
+   font-size: 2vh;
  }
 }
 .input-group{
@@ -41,7 +42,7 @@
 }
 #clear-messages{
   width: 120px;
-  height:4vh;
+  height:5vh;
   margin:0 auto;
   margin-left: 5px;
   padding: 2px;
@@ -49,7 +50,7 @@
 .message-heading {
   background-color: #acb119;
   color: #404040;
-  padding: 10px;
+  padding: 0px;
   border-radius: 5px 5px 0px 0px;
   letter-spacing: .5px;
 }
