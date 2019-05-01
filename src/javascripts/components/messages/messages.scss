@@ -12,12 +12,18 @@
  overflow-y: scroll;
  .message {
    background-color: white;
-   margin-bottom: 10px;
+   margin-bottom: 20px;
    border-radius: 5px 5px 5px 5px;
  }
  .message-body{
    padding: 10px;
   
+ }
+ .card-footer{
+   padding: 0px;
+   text-align: center;
+   background-color: #acb119;
+   font-size: 2vh;
  }
 }
 .input-group{
@@ -25,21 +31,36 @@
 }
 .input-box{
   display: flex;
-  width:65vw;
+  width:60vw;
   flex-direction: column;
   margin-right: 0px;
   margin-left:5px;
+  input[type=text] {
+    border: 2px solid #aebe1a;
+    border-radius: 4px;
+  }
 }
 #clear-messages{
   width: 120px;
-  height:4vh;
+  height:5vh;
   margin:0 auto;
-  margin-left: 0px;
+  margin-left: 5px;
   padding: 2px;
 }
 .message-heading {
   background-color: #acb119;
   color: #404040;
-  padding: 10px;
+  padding: 0px;
   border-radius: 5px 5px 0px 0px;
+  letter-spacing: .5px;
+}
+#message1 {
+  .message-body{
+    color: #797c10;
+}
+#canned1 {
+  .message-body{
+    color: #797c10;
+}
+}
 }

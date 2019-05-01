@@ -26,6 +26,7 @@ const domStringBuilder = (array) => {
     domString += '  <div class="message-body">';
     domString += `    <div>${item.msg}</div>`;
     domString += '  </div>';
+    domString += '  <div class="card-footer">Like & Dislike Goes here</div>';
     domString += '</div>';
   });
   util.printToDom('messages', domString);
@@ -103,7 +104,6 @@ const getData = () => {
       console.error(error);
     });
 };
-
 
 export default {
   domStringBuilder,
