@@ -1,9 +1,12 @@
 import firebase from 'firebase';
 
+let messages = [];
+
 const returnData = (data) => {
   const messageData = data.val();
-  const messages = Object.values(messageData);
-  console.error(messages);
+  const dbMessages = Object.values(messageData);
+  messages = dbMessages;
+  console.error(messageData);
 };
 
 const returnError = (error) => {
@@ -11,7 +14,8 @@ const returnError = (error) => {
 };
 
 const getData = () => {
-  firebase.database().ref('message').on('value', returnData, returnError);
+  firebase.database().ref('messages').on('value', returnData, returnError);
+  return messages;
 };
 
 export default { getData };

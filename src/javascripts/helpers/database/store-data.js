@@ -5,8 +5,7 @@ const addData = (msg) => {
 };
 
 const overwriteData = (array) => {
-  const messages = {};
-  firebase.database().ref('messages').push(messages);
+  firebase.database().ref('messages').set('');
   array.forEach((item) => {
     firebase.database().ref('messages').push(item);
   });

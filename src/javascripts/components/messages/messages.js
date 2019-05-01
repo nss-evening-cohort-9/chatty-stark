@@ -36,7 +36,8 @@ const domStringBuilder = (array) => {
 };
 
 const print = () => {
-  messages = fbData.getData();
+  fbData.getData();
+  console.error(messages);
   domStringBuilder(messages);
 };
 
