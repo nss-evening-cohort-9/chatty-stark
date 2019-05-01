@@ -12,16 +12,26 @@
   }
   #messages {
     .message {
-      background-color: rgb(93, 93, 93);
+      background-color: #414040;
       margin-bottom: 10px;
       border-radius: 5px 5px 5px 5px;
     }
     .message-heading {
       background-color: #797c11;
       color: #ffffff;
-      padding: 10px;
+      padding: -5px;
       border-radius: 5px 5px 0px 0px;
     }
+    .card-footer{
+      background-color: #797c11;
+    }
+    label{
+      color:white !important;
+    }
+  }
+  input[type=text] {
+    background-color: black;
+    color: white;
   }
   .modal-header{
     border-radius: 0px;
