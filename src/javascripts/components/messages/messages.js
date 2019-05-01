@@ -31,16 +31,13 @@ const domStringBuilder = (array) => {
   util.printToDom('messages', domString);
 };
 
-const addMessage = (event) => {
-  event.preventDefault();
-
-  const newMessageInput = document.getElementById('new-message');
+const addMessage = (inputValue) => {
   const newMessage = {
     id: `message${counter}`,
     imageUrl: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/15/08/jon-snow-got.jpg',
     userName: 'Jon Snow',
     timeStamp: addTimeStamp(),
-    msg: newMessageInput.value,
+    msg: inputValue,
   };
 
   counter += 1;
@@ -71,6 +68,15 @@ const addMessage = (event) => {
   }
   document.getElementById('new-message').value = '';
 };
+
+const errorCheck = (event) => {
+  event.preventDefault();
+  const inputValue = document.getElementById('new-message').value;
+  if (inputValue !== '') {
+    addMessage(inputValue);
+  }
+};
+
 
 const clearMessages = () => {
   messages = [];
@@ -105,4 +111,5 @@ export default {
   addMessage,
   deleteMessage,
   clearMessages,
+  errorCheck,
 };
