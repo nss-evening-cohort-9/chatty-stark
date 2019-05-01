@@ -1,11 +1,14 @@
 import moment from 'moment';
 
+import store from '../../helpers/database/store-data';
+import fbData from '../../helpers/database/retrieve-data';
 import data from '../../helpers/data';
 import util from '../../helpers/util';
 import bot from '../chatbot';
 
 let messages = [];
 let counter = 6;
+
 
 const addTimeStamp = () => {
   const time = moment().format('LT');
@@ -32,6 +35,11 @@ const domStringBuilder = (array) => {
   util.printToDom('messages', domString);
 };
 
+const print = () => {
+  messages = fbData.getData();
+  domStringBuilder(messages);
+};
+
 const addMessage = (inputValue) => {
   const newMessage = {
     id: `message${counter}`,
@@ -42,29 +50,33 @@ const addMessage = (inputValue) => {
   };
 
   counter += 1;
-  messages.push(newMessage);
+  // messages.push(newMessage);
+  store.addData(newMessage);
 
   if (messages.length > 20) {
     const tempMsg = messages.slice(1);
-    messages = tempMsg;
-    domStringBuilder(messages);
+    // messages = tempMsg;
+    store.overwriteData(tempMsg);
+    print();
   } else {
-    domStringBuilder(messages);
+    print();
   }
 
   if (bot.aliasCheck()) {
     const botMessage = bot.getBotResponse();
     botMessage.id = `message${counter}`;
     botMessage.timeStamp = addTimeStamp();
-    messages.push(botMessage);
+    // messages.push(botMessage);
+    store.addData(botMessage);
     counter += 1;
 
     if (messages.length > 20) {
       const tempMsg = messages.slice(1);
-      messages = tempMsg;
-      domStringBuilder(messages);
+      // messages = tempMsg;
+      store.overwriteData(tempMsg);
+      print();
     } else {
-      domStringBuilder(messages);
+      print();
     }
   }
   document.getElementById('new-message').value = '';
@@ -81,15 +93,17 @@ const errorCheck = (event) => {
 
 const clearMessages = () => {
   messages = [];
-  domStringBuilder(messages);
+  store.overwriteData(messages);
+  print();
 };
 
 const deleteMessage = (event) => {
   if (event.target.id === 'delete') {
     const criteria = event.target.classList[0];
     const tempArray = messages.filter(message => message.id !== criteria);
-    messages = tempArray;
-    domStringBuilder(messages);
+    // messages = tempArray;
+    store.overwriteData(tempArray);
+    print();
   }
 };
 
@@ -97,8 +111,9 @@ const getData = () => {
   data.getMessagesData()
     .then((response) => {
       const messagesData = response.data.messages;
-      messages = messagesData;
-      domStringBuilder(messages);
+      // messages = messagesData;
+      store.overwriteData(messagesData);
+      print();
     })
     .catch((error) => {
       console.error(error);
@@ -106,7 +121,7 @@ const getData = () => {
 };
 
 export default {
-  domStringBuilder,
+  print,
   getData,
   addMessage,
   deleteMessage,
