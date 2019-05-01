@@ -42,18 +42,17 @@ const addMessage = (event) => {
     timeStamp: addTimeStamp(),
     msg: newMessageInput.value,
   };
+
+  counter += 1;
   messages.push(newMessage);
 
-  if (messages.length > 10) {
+  if (messages.length > 20) {
     const tempMsg = messages.slice(1);
     messages = tempMsg;
     domStringBuilder(messages);
   } else {
     domStringBuilder(messages);
   }
-
-  counter += 1;
-  messages.push(newMessage);
 
   if (bot.aliasCheck()) {
     const botMessage = bot.getBotResponse();
@@ -62,7 +61,7 @@ const addMessage = (event) => {
     messages.push(botMessage);
     counter += 1;
 
-    if (messages.length > 10) {
+    if (messages.length > 20) {
       const tempMsg = messages.slice(1);
       messages = tempMsg;
       domStringBuilder(messages);
