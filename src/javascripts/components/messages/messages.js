@@ -5,6 +5,7 @@ import util from '../../helpers/util';
 import bot from '../chatbot';
 
 let messages = [];
+let counter = 6;
 
 const addTimeStamp = () => {
   const time = moment().format('LT');
@@ -32,7 +33,6 @@ const domStringBuilder = (array) => {
 
 const addMessage = (event) => {
   event.preventDefault();
-  let counter = 6;
 
   const newMessageInput = document.getElementById('new-message');
   const newMessage = {
@@ -53,16 +53,14 @@ const addMessage = (event) => {
   }
 
   counter += 1;
+  messages.push(newMessage);
 
   if (bot.aliasCheck()) {
-    messages.push(bot.getBotResponse());
-    const msgWithTime = [];
-    messages.forEach((msg) => {
-      const msgCopy = msg;
-      msgCopy.timeStamp = addTimeStamp();
-      msgWithTime.push(msgCopy);
-    });
-    messages = msgWithTime;
+    const botMessage = bot.getBotResponse();
+    botMessage.id = `message${counter}`;
+    botMessage.timeStamp = addTimeStamp();
+    messages.push(botMessage);
+    counter += 1;
 
     if (messages.length > 10) {
       const tempMsg = messages.slice(1);
@@ -72,13 +70,14 @@ const addMessage = (event) => {
       domStringBuilder(messages);
     }
   }
-
   document.getElementById('new-message').value = '';
 };
+
 const clearMessages = () => {
   messages = [];
   domStringBuilder(messages);
 };
+
 const deleteMessage = (event) => {
   if (event.target.id === 'delete') {
     const criteria = event.target.classList[0];
