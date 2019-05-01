@@ -6,7 +6,6 @@ const returnData = (data) => {
   const messageData = data.val();
   const dbMessages = Object.values(messageData);
   messages = dbMessages;
-  console.error(messageData);
 };
 
 const returnError = (error) => {
@@ -18,4 +17,9 @@ const getData = () => {
   return messages;
 };
 
-export default { getData };
+const getSeedData = () => {
+  firebase.database().ref('seed').on('value', returnData, returnError);
+  return messages;
+};
+
+export default { getData, getSeedData };

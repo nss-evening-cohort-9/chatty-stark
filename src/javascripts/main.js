@@ -5,15 +5,13 @@ import events from './helpers/attach-events';
 import bot from './components/chatbot';
 import readability from './components/textsize/readability';
 import dbInit from './helpers/database/db-init';
-import db from './helpers/database/retrieve-data';
 
 import 'bootstrap';
 import '../styles/main.scss';
 
 const init = () => {
   dbInit.firebaseSetup();
-  db.getData();
-  onLoad.getData();
+  onLoad.printSeed();
   friendslist.getFriends();
   themes.themeButtons();
   readability.attachEvents();

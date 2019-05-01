@@ -2,7 +2,6 @@ import moment from 'moment';
 
 import store from '../../helpers/database/store-data';
 import fbData from '../../helpers/database/retrieve-data';
-import data from '../../helpers/data';
 import util from '../../helpers/util';
 import bot from '../chatbot';
 
@@ -37,7 +36,6 @@ const domStringBuilder = (array) => {
 
 const print = () => {
   fbData.getData();
-  console.error(messages);
   domStringBuilder(messages);
 };
 
@@ -108,22 +106,15 @@ const deleteMessage = (event) => {
   }
 };
 
-const getData = () => {
-  data.getMessagesData()
-    .then((response) => {
-      const messagesData = response.data.messages;
-      // messages = messagesData;
-      store.overwriteData(messagesData);
-      print();
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+const printSeed = () => {
+  messages = fbData.getSeedData();
+  console.error(messages);
+  domStringBuilder(messages);
 };
 
 export default {
   print,
-  getData,
+  printSeed,
   addMessage,
   deleteMessage,
   clearMessages,
