@@ -11,7 +11,7 @@ const addTimeStamp = () => {
   const time = moment().format('LT');
   return time;
 };
-addTimeStamp();
+
 
 const domStringBuilder = (array) => {
   let domString = '';
@@ -32,19 +32,25 @@ const domStringBuilder = (array) => {
   util.printToDom('messages', domString);
 };
 
-const addMessage = (event) => {
-  event.preventDefault();
-
-  const newMessageInput = document.getElementById('new-message');
+const addMessage = (inputValue) => {
   const newMessage = {
     id: `message${counter}`,
     imageUrl: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/15/08/jon-snow-got.jpg',
     userName: 'Jon Snow',
     timeStamp: addTimeStamp(),
-    msg: newMessageInput.value,
+    msg: inputValue,
   };
+
   counter += 1;
   messages.push(newMessage);
+
+  if (messages.length > 20) {
+    const tempMsg = messages.slice(1);
+    messages = tempMsg;
+    domStringBuilder(messages);
+  } else {
+    domStringBuilder(messages);
+  }
 
   if (bot.aliasCheck()) {
     const botMessage = bot.getBotResponse();
@@ -52,10 +58,26 @@ const addMessage = (event) => {
     botMessage.timeStamp = addTimeStamp();
     messages.push(botMessage);
     counter += 1;
+
+    if (messages.length > 20) {
+      const tempMsg = messages.slice(1);
+      messages = tempMsg;
+      domStringBuilder(messages);
+    } else {
+      domStringBuilder(messages);
+    }
   }
-  domStringBuilder(messages);
   document.getElementById('new-message').value = '';
 };
+
+const errorCheck = (event) => {
+  event.preventDefault();
+  const inputValue = document.getElementById('new-message').value;
+  if (inputValue !== '') {
+    addMessage(inputValue);
+  }
+};
+
 
 const clearMessages = () => {
   messages = [];
@@ -83,15 +105,11 @@ const getData = () => {
     });
 };
 
-function scrollToBottom() {
-  document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
-}
-
 export default {
   domStringBuilder,
   getData,
   addMessage,
   deleteMessage,
   clearMessages,
-  scrollToBottom,
+  errorCheck,
 };
