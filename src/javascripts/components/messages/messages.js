@@ -21,6 +21,7 @@ const domStringBuilder = (array) => {
     domString += `    <img height="25" width="25" src=${item.imageUrl} class="pic">`;
     domString += `    <div class="msg-name">${item.userName}</div>`;
     domString += `    <div class="time" id="time">${item.timeStamp}</div>`;
+    domString += '      <i class="fas fa-thumbs-up"></i>';
     domString += `    <i id="delete" class="${item.id} fas fa-trash-alt"></i>`;
     domString += '  </div>';
     domString += '  <div class="message-body">';
