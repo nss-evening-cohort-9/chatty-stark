@@ -45,9 +45,9 @@ const domStringBuilder = (array) => {
     domString += `    <div>${item.msg}</div>`;
     domString += '  </div>';
     domString += '  <div class="card-footer">';
-    domString += `    <i class="like like${item.id} fas fa-thumbs-up"></i>`;
-    domString += `    <p id="like${item.id}">0</p>`;
     domString += `    <i class="dislike like${item.id} fas fa-thumbs-down"> </i>`;
+    domString += `    <p id="like${item.id}">0</p>`;
+    domString += `    <i class="like like${item.id} fas fa-thumbs-up"></i>`;
     domString += '  </div>';
     domString += '</div>';
   });
