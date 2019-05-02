@@ -14,7 +14,6 @@ const addTimeStamp = () => {
 };
 
 const addLikesOrRemove = (event) => {
-  console.error('test');
   const actionClass = event.target.classList[0];
   const reference = event.target.classList[1];
   const likeCount = document.getElementById(reference);
@@ -23,7 +22,6 @@ const addLikesOrRemove = (event) => {
     let likeCoutValue = Number(likeCount.innerHTML);
     likeCoutValue += 1;
     likeCount.innerHTML = likeCoutValue;
-    console.error(likeCount);
   } else if (actionClass === 'dislike') {
     let likeCoutValue = Number(likeCount.innerHTML);
     likeCoutValue -= 1;
