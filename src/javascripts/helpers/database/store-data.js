@@ -4,11 +4,13 @@ const addData = (msg) => {
   firebase.database().ref('messages').push(msg);
 };
 
-const overwriteData = (array) => {
-  firebase.database().ref('messages').set('');
-  array.forEach((item) => {
-    firebase.database().ref('messages').push(item);
-  });
+const overwriteData = () => {
+  let message = {};
+  firebase.database().ref('messages').set(message);
 };
 
-export default { addData, overwriteData };
+const removeData = (key) => {
+  firebase.database().ref(`messages/${key}`).remove();
+};
+
+export default { addData, overwriteData, removeData };
