@@ -6,6 +6,8 @@ import bot from '../chatbot';
 
 
 let messages = [];
+let messageKeys = [];
+
 const addTimeStamp = () => {
   const time = moment().format('LT');
   return time;
@@ -14,16 +16,17 @@ const addTimeStamp = () => {
 const addLikesOrRemove = (event) => {
   const actionClass = event.target.classList[0];
   const reference = event.target.classList[1];
-  const likeCount = document.getElementById(reference);
+  const likeCount = document.getElementById(`like${reference}`);
 
   if (actionClass === 'like') {
-    let likeCoutValue = Number(likeCount.innerHTML);
-    likeCoutValue += 1;
-    likeCount.innerHTML = likeCoutValue;
+    let likeCountValue = Number(likeCount.innerHTML);
+    likeCountValue += 1;
+    console.error(likeCountValue);
+    store.likeData(reference, likeCountValue);
   } else if (actionClass === 'dislike') {
-    let likeCoutValue = Number(likeCount.innerHTML);
-    likeCoutValue -= 1;
-    likeCount.innerHTML = likeCoutValue;
+    let likeCountValue = Number(likeCount.innerHTML);
+    likeCountValue -= 1;
+    store.likeData(reference, likeCountValue);
   }
 };
 
@@ -42,9 +45,9 @@ const domStringBuilder = (array, keys) => {
     domString += `    <div>${item.msg}</div>`;
     domString += '  </div>';
     domString += '  <div class="card-footer">';
-    domString += `    <i class="dislike like${item.id} fas fa-thumbs-down"> </i>`;
-    domString += `    <p id="like${item.id}">0</p>`;
-    domString += `    <i class="like like${item.id} fas fa-thumbs-up"></i>`;
+    domString += `    <i class="dislike ${keys[counter]} fas fa-thumbs-down"> </i>`;
+    domString += `    <p id="like${keys[counter]}">${item.likeCount}</p>`;
+    domString += `    <i class="like ${keys[counter]} fas fa-thumbs-up"></i>`;
     domString += '  </div>';
     domString += '</div>';
     counter += 1;
@@ -61,35 +64,23 @@ const addMessage = (inputValue) => {
     imageUrl: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/15/08/jon-snow-got.jpg',
     userName: 'Jon Snow',
     timeStamp: addTimeStamp(),
+    likeCount: 0,
     msg: inputValue,
   };
 
-  // counter += 1;
-  // messages.push(newMessage);
   store.addData(newMessage);
 
-  // if (messages.length > 20) {
-  // const tempMsg = messages.slice(1);
-  // messages = tempMsg;
-  //   store.overwriteData(tempMsg);
-  //   print();
-  // } else {
-  //   print();
-  // }
+  if (messages.length > 20) {
+    store.removeData(messageKeys[0]);
+  }
 
   if (bot.aliasCheck()) {
     const botMessage = bot.getBotResponse();
     botMessage.timeStamp = addTimeStamp();
-    // messages.push(botMessage);
     store.addData(botMessage);
 
     if (messages.length > 20) {
-      const tempMsg = messages.slice(1);
-      // messages = tempMsg;
-      store.overwriteData(tempMsg);
-      print();
-    } else {
-      print();
+      store.removeData(messageKeys[0]);
     }
   }
   document.getElementById('new-message').value = '';
@@ -104,9 +95,7 @@ const errorCheck = (event) => {
 };
 
 const clearMessages = () => {
-  messages = [];
-  store.overwriteData(messages);
-  print();
+  store.overwriteData();
 };
 
 const deleteMessage = (event) => {
@@ -118,7 +107,8 @@ const deleteMessage = (event) => {
 
 const dataRecipient = (array, keys) => {
   messages = array;
-  domStringBuilder(messages, keys);
+  messageKeys = keys;
+  domStringBuilder(messages, messageKeys);
 };
 
 export default {
