@@ -4,10 +4,27 @@ import store from '../../helpers/database/store-data';
 import util from '../../helpers/util';
 import bot from '../chatbot';
 
+
 let messages = [];
 const addTimeStamp = () => {
   const time = moment().format('LT');
   return time;
+};
+
+const addLikesOrRemove = (event) => {
+  const actionClass = event.target.classList[0];
+  const reference = event.target.classList[1];
+  const likeCount = document.getElementById(reference);
+
+  if (actionClass === 'like') {
+    let likeCoutValue = Number(likeCount.innerHTML);
+    likeCoutValue += 1;
+    likeCount.innerHTML = likeCoutValue;
+  } else if (actionClass === 'dislike') {
+    let likeCoutValue = Number(likeCount.innerHTML);
+    likeCoutValue -= 1;
+    likeCount.innerHTML = likeCoutValue;
+  }
 };
 
 const domStringBuilder = (array, keys) => {
@@ -24,7 +41,11 @@ const domStringBuilder = (array, keys) => {
     domString += '  <div class="message-body">';
     domString += `    <div>${item.msg}</div>`;
     domString += '  </div>';
-    domString += '  <div class="card-footer">Like & Dislike Goes here</div>';
+    domString += '  <div class="card-footer">';
+    domString += `    <i class="dislike like${item.id} fas fa-thumbs-down"> </i>`;
+    domString += `    <p id="like${item.id}">0</p>`;
+    domString += `    <i class="like like${item.id} fas fa-thumbs-up"></i>`;
+    domString += '  </div>';
     domString += '</div>';
     counter += 1;
   });
@@ -96,7 +117,8 @@ const deleteMessage = (event) => {
 };
 
 const dataRecipient = (array, keys) => {
-  domStringBuilder(array, keys);
+  messages = array;
+  domStringBuilder(messages, keys);
 };
 
 export default {
@@ -107,4 +129,5 @@ export default {
   clearMessages,
   errorCheck,
   dataRecipient,
+  addLikesOrRemove,
 };

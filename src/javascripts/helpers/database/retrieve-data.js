@@ -12,7 +12,7 @@ const returnData = (data) => {
     send.dataRecipient(messages, messageKeys);
   } else {
     messages = [];
-    messages = [];
+    messageKeys = [];
     send.dataRecipient(messages, messageKeys);
   }
 };
@@ -23,7 +23,6 @@ const returnError = (error) => {
 
 const loadMessageData = () => {
   firebase.database().ref('messages').on('value', returnData, returnError);
-  return messages;
 };
 
 export default { loadMessageData };
