@@ -1,12 +1,12 @@
 import moment from 'moment';
 
-import data from '../../helpers/data';
+import store from '../../helpers/database/store-data';
 import util from '../../helpers/util';
 import bot from '../chatbot';
 
 
 let messages = [];
-let counter = 6;
+let messageKeys = [];
 
 const addTimeStamp = () => {
   const time = moment().format('LT');
@@ -16,75 +16,71 @@ const addTimeStamp = () => {
 const addLikesOrRemove = (event) => {
   const actionClass = event.target.classList[0];
   const reference = event.target.classList[1];
-  const likeCount = document.getElementById(reference);
+  const likeCount = document.getElementById(`like${reference}`);
 
   if (actionClass === 'like') {
-    let likeCoutValue = Number(likeCount.innerHTML);
-    likeCoutValue += 1;
-    likeCount.innerHTML = likeCoutValue;
+    let likeCountValue = Number(likeCount.innerHTML);
+    likeCountValue += 1;
+    console.error(likeCountValue);
+    store.likeData(reference, likeCountValue);
   } else if (actionClass === 'dislike') {
-    let likeCoutValue = Number(likeCount.innerHTML);
-    likeCoutValue -= 1;
-    likeCount.innerHTML = likeCoutValue;
+    let likeCountValue = Number(likeCount.innerHTML);
+    likeCountValue -= 1;
+    store.likeData(reference, likeCountValue);
   }
 };
 
-const domStringBuilder = (array) => {
+const domStringBuilder = (array, keys) => {
+  let counter = 0;
   let domString = '';
   array.forEach((item) => {
-    domString += `<div class="message shadow-sm" id=${item.id}>`;
+    domString += `<div class="message shadow-sm" id=${keys[counter]}>`;
     domString += '  <div class="message-heading d-flex align-items-center">';
     domString += `    <img height="25" width="25" src=${item.imageUrl} class="pic">`;
     domString += `    <div class="msg-name">${item.userName}</div>`;
     domString += `    <div class="time" id="time">${item.timeStamp}</div>`;
-    domString += `    <i id="delete" class="${item.id} fas fa-trash-alt"></i>`;
+    domString += `    <i id="delete" class="${keys[counter]} fas fa-trash-alt"></i>`;
     domString += '  </div>';
     domString += '  <div class="message-body">';
     domString += `    <div>${item.msg}</div>`;
     domString += '  </div>';
     domString += '  <div class="card-footer">';
-    domString += `    <i class="dislike like${item.id} fas fa-thumbs-down"> </i>`;
-    domString += `    <p id="like${item.id}">0</p>`;
-    domString += `    <i class="like like${item.id} fas fa-thumbs-up"></i>`;
+    domString += `    <i class="dislike ${keys[counter]} fas fa-thumbs-down"> </i>`;
+    domString += `    <p id="like${keys[counter]}">${item.likeCount}</p>`;
+    domString += `    <i class="like ${keys[counter]} fas fa-thumbs-up"></i>`;
     domString += '  </div>';
     domString += '</div>';
+    counter += 1;
   });
   util.printToDom('messages', domString);
 };
 
+const print = () => {
+  domStringBuilder(messages);
+};
+
 const addMessage = (inputValue) => {
   const newMessage = {
-    id: `message${counter}`,
     imageUrl: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/15/08/jon-snow-got.jpg',
     userName: 'Jon Snow',
     timeStamp: addTimeStamp(),
+    likeCount: 0,
     msg: inputValue,
   };
 
-  counter += 1;
-  messages.push(newMessage);
+  store.addData(newMessage);
 
   if (messages.length > 20) {
-    const tempMsg = messages.slice(1);
-    messages = tempMsg;
-    domStringBuilder(messages);
-  } else {
-    domStringBuilder(messages);
+    store.removeData(messageKeys[0]);
   }
 
   if (bot.aliasCheck()) {
     const botMessage = bot.getBotResponse();
-    botMessage.id = `message${counter}`;
     botMessage.timeStamp = addTimeStamp();
-    messages.push(botMessage);
-    counter += 1;
+    store.addData(botMessage);
 
     if (messages.length > 20) {
-      const tempMsg = messages.slice(1);
-      messages = tempMsg;
-      domStringBuilder(messages);
-    } else {
-      domStringBuilder(messages);
+      store.removeData(messageKeys[0]);
     }
   }
   document.getElementById('new-message').value = '';
@@ -98,40 +94,30 @@ const errorCheck = (event) => {
   }
 };
 
-
 const clearMessages = () => {
-  messages = [];
-  domStringBuilder(messages);
+  store.overwriteData();
 };
 
 const deleteMessage = (event) => {
   if (event.target.id === 'delete') {
     const criteria = event.target.classList[0];
-    const tempArray = messages.filter(message => message.id !== criteria);
-    messages = tempArray;
-    domStringBuilder(messages);
+    store.removeData(criteria);
   }
 };
 
-
-const getData = () => {
-  data.getMessagesData()
-    .then((response) => {
-      const messagesData = response.data.messages;
-      messages = messagesData;
-      domStringBuilder(messages);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+const dataRecipient = (array, keys) => {
+  messages = array;
+  messageKeys = keys;
+  domStringBuilder(messages, messageKeys);
 };
 
 export default {
+  print,
   domStringBuilder,
-  getData,
   addMessage,
   deleteMessage,
   clearMessages,
   errorCheck,
+  dataRecipient,
   addLikesOrRemove,
 };
