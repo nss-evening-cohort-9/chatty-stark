@@ -6,10 +6,15 @@ let messageKeys = [];
 
 const returnData = (data) => {
   const messageData = data.val();
-  messages = Object.values(messageData);
-  messageKeys = Object.keys(messageData);
-  console.error(messages, messageKeys);
-  send.dataRecipient(messages, messageKeys);
+  if (messageData !== null) {
+    messages = Object.values(messageData);
+    messageKeys = Object.keys(messageData);
+    send.dataRecipient(messages, messageKeys);
+  } else {
+    messages = [];
+    messages = [];
+    send.dataRecipient(messages, messageKeys);
+  }
 };
 
 const returnError = (error) => {

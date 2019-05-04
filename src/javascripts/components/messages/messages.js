@@ -91,15 +91,11 @@ const clearMessages = () => {
 const deleteMessage = (event) => {
   if (event.target.id === 'delete') {
     const criteria = event.target.classList[0];
-    console.error(criteria);
-    // messages = tempArray;
     store.removeData(criteria);
-    // print();
   }
 };
 
 const dataRecipient = (array, keys) => {
-  console.error(keys);
   domStringBuilder(array, keys);
 };
 
