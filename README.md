@@ -20,7 +20,7 @@ https://nodejs.org/en/
 ## How To Run
 ```
 # Clone this repository
-$ git clone git@github.com:nss-evening-cohort-9/chatty-stark.git
+$ git clone https://github.com/nss-evening-cohort-9/chatty-stark.git
 
 # Go into the repository
 $ cd chatty-stark
