@@ -12,11 +12,16 @@
       <!-- navbar -->
       <nav class="navbar navbar-light bg-light sticky-top large-text" id="dark">
         <a class="navbar-brand"><img class="logo" src="../assets/starklogo.png"></a>
-        <li class="nav-item dropdown mr-sm-2">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
-          <div class="dropdown-menu shadow-sm" aria-labelledby="navbarDropdownMenuLink" id="dark">
-            <a class="dropdown-item" href="#" id="settings" data-toggle="modal" data-target="#basicModal">Accessibility</a>
-          </div>
+        <div class="d-flex">
+          <li id="sign-in" class="nav-item mr-sm-2">
+            <a id="signin-link" class="nav-link" href="#">Sign In</a>
+          </li>
+          <li class="nav-item dropdown mr-sm-2">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
+            <div class="dropdown-menu shadow-sm" aria-labelledby="navbarDropdownMenuLink" id="dark">
+              <a class="dropdown-item" href="#" id="settings" data-toggle="modal" data-target="#basicModal">Accessibility</a>
+            </div>
+        </div>
         </li>
       </nav>
       <!-- /navbar -->
@@ -27,7 +32,7 @@
           <div id="messages"></div>
           <div class="input-group">
               <div class="input-box">
-          <input id="new-message" type="text" autocomplete="off" placeholder="Press return to submit" title="type !help for Starkbot">
+          <input id="new-message" type="text" autocomplete="off" placeholder="Press return to submit" data-container="body" data-toggle="popover" data-placement="top" data-content="Please sign in to send messages.">
           <label for="new-message" class="text-right text-muted text-small starktext" id="dark">!help for Starkbot</label>
               </div>
           <button id="clear-messages" type="button" class="btn1 btn-secondary active">Clear</button>

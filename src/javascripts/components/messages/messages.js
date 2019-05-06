@@ -1,12 +1,80 @@
 import moment from 'moment';
+import $ from 'jquery';
 
 import store from '../../helpers/database/store-data';
 import util from '../../helpers/util';
 import bot from '../chatbot';
 
+window.jQuery = $;
+window.$ = $;
 
 let messages = [];
 let messageKeys = [];
+let username = '';
+let profilepic = '';
+const usernames = [
+  {
+    name: 'Jeressia',
+    pic: 'https://ca.slack-edge.com/T03F2SDTJ-UFA4DSCNQ-81dc1a95924d-48',
+  },
+  {
+    name: 'Lwam',
+    pic: 'https://ca.slack-edge.com/T03F2SDTJ-UFS9Q7LJG-5f21f3636e7e-48',
+  },
+  {
+    name: 'Samuel',
+    pic: 'https://ca.slack-edge.com/T03F2SDTJ-UFA8UFS5A-4a27698cb6cf-48',
+  },
+  {
+    name: 'Silvestre',
+    pic: 'https://ca.slack-edge.com/T03F2SDTJ-UFS5WJW68-97c4e988b6cf-48',
+  },
+];
+
+const signOut = () => {
+  username = '';
+  profilepic = '';
+  document.getElementById('sign-in').innerHTML = '<a id="signin-link" class="nav-link" href="#">Sign In</a>';
+};
+
+const getUserInfo = (event) => {
+  event.preventDefault();
+  const input = document.getElementById('signin-input');
+  let found = false;
+  usernames.forEach((user) => {
+    if (input.value === user.name) {
+      username = user.name;
+      profilepic = user.pic;
+      found = true;
+    }
+
+    if (found) {
+      $('#signin-input').popover('hide');
+      $('#new-message').popover('hide');
+      document.getElementById('sign-in').innerHTML = '<a id="signout" class="nav-link" href="#">Sign Out</a>';
+      document.getElementById('signout').addEventListener('click', signOut);
+    } else {
+      $('#signin-input').popover('show');
+    }
+  });
+};
+
+const setUser = (event) => {
+  $('#signin-input').popover('hide');
+  if (event.target.id === 'signin-link') {
+    let signIn = '<form id="signin-form">';
+    signIn += '<input id="signin-input" type="input" placeholder="type your name" autocomplete="off"';
+    signIn += 'data-container="body" data-toggle="popover" data-placement="top" data-content="That user does not exist, please try again.">';
+    signIn += '</form>';
+    document.getElementById('sign-in').innerHTML = signIn;
+    document.getElementById('signin-form').addEventListener('submit', getUserInfo);
+  }
+};
+
+const gotoBottom = (elementId) => {
+  const element = document.getElementById(elementId);
+  element.scrollTop = element.scrollHeight - element.clientHeight;
+};
 
 const addTimeStamp = () => {
   const time = moment().format('LT');
@@ -21,7 +89,6 @@ const addLikesOrRemove = (event) => {
   if (actionClass === 'like') {
     let likeCountValue = Number(likeCount.innerHTML);
     likeCountValue += 1;
-    console.error(likeCountValue);
     store.likeData(reference, likeCountValue);
   } else if (actionClass === 'dislike') {
     let likeCountValue = Number(likeCount.innerHTML);
@@ -53,6 +120,7 @@ const domStringBuilder = (array, keys) => {
     counter += 1;
   });
   util.printToDom('messages', domString);
+  gotoBottom('messages');
 };
 
 const print = () => {
@@ -61,8 +129,8 @@ const print = () => {
 
 const addMessage = (inputValue) => {
   const newMessage = {
-    imageUrl: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/15/08/jon-snow-got.jpg',
-    userName: 'Jon Snow',
+    imageUrl: profilepic,
+    userName: username,
     timeStamp: addTimeStamp(),
     likeCount: 0,
     msg: inputValue,
@@ -77,6 +145,7 @@ const addMessage = (inputValue) => {
   if (bot.aliasCheck()) {
     const botMessage = bot.getBotResponse();
     botMessage.timeStamp = addTimeStamp();
+    botMessage.likeCount = 0;
     store.addData(botMessage);
 
     if (messages.length > 20) {
@@ -89,8 +158,11 @@ const addMessage = (inputValue) => {
 const errorCheck = (event) => {
   event.preventDefault();
   const inputValue = document.getElementById('new-message').value;
-  if (inputValue !== '') {
+  if (inputValue !== '' && username !== '') {
     addMessage(inputValue);
+  } else if (inputValue !== '' && username === '') {
+    $('#new-message').popover('show');
+    document.getElementById('new-message').addEventListener('click', () => $('#new-message').popover('hide'));
   }
 };
 
@@ -120,4 +192,5 @@ export default {
   errorCheck,
   dataRecipient,
   addLikesOrRemove,
+  setUser,
 };
