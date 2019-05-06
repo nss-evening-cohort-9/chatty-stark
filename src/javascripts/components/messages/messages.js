@@ -49,20 +49,22 @@ const getUserInfo = (event) => {
     }
 
     if (found) {
+      $('#signin-input').popover('hide');
+      $('#new-message').popover('hide');
       document.getElementById('sign-in').innerHTML = '<a id="signout" class="nav-link" href="#">Sign Out</a>';
       document.getElementById('signout').addEventListener('click', signOut);
     } else {
-      $('#signin-input').tooltip('show');
+      $('#signin-input').popover('show');
     }
   });
 };
 
 const setUser = (event) => {
-  $('#signin-input').tooltip('hide');
+  $('#signin-input').popover('hide');
   if (event.target.id === 'signin-link') {
     let signIn = '<form id="signin-form">';
     signIn += '<input id="signin-input" type="input" placeholder="type your name" autocomplete="off"';
-    signIn += 'data-toggle="tooltip" data-placement="bottom" title="That user does not exist, please try again.">';
+    signIn += 'data-container="body" data-toggle="popover" data-placement="top" data-content="That user does not exist, please try again.">';
     signIn += '</form>';
     document.getElementById('sign-in').innerHTML = signIn;
     document.getElementById('signin-form').addEventListener('submit', getUserInfo);
@@ -87,7 +89,6 @@ const addLikesOrRemove = (event) => {
   if (actionClass === 'like') {
     let likeCountValue = Number(likeCount.innerHTML);
     likeCountValue += 1;
-    console.error(likeCountValue);
     store.likeData(reference, likeCountValue);
   } else if (actionClass === 'dislike') {
     let likeCountValue = Number(likeCount.innerHTML);
@@ -144,6 +145,7 @@ const addMessage = (inputValue) => {
   if (bot.aliasCheck()) {
     const botMessage = bot.getBotResponse();
     botMessage.timeStamp = addTimeStamp();
+    botMessage.likeCount = 0;
     store.addData(botMessage);
 
     if (messages.length > 20) {
@@ -158,6 +160,9 @@ const errorCheck = (event) => {
   const inputValue = document.getElementById('new-message').value;
   if (inputValue !== '' && username !== '') {
     addMessage(inputValue);
+  } else if (inputValue !== '' && username === '') {
+    $('#new-message').popover('show');
+    document.getElementById('new-message').addEventListener('click', () => $('#new-message').popover('hide'));
   }
 };
 
