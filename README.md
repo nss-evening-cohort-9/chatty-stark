@@ -1,7 +1,9 @@
 # starkTALK
 Welcome to starTalk chat app!
 
-![image of starTalk chat app](https://raw.githubusercontent.com/nss-evening-cohort-9/chatty-stark/master/assets/readme.png)
+![image of starTalk chat app](https://raw.githubusercontent.com/nss-evening-cohort-9/chatty-stark/master/assets/readme1.png)
+
+![image of starTalk chat app](https://raw.githubusercontent.com/nss-evening-cohort-9/chatty-stark/master/assets/readme2.png)
 
 ## Technologies Used
 * html, css, and javascript
