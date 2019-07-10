@@ -35,6 +35,8 @@ $ npm start
 ```
 In the browser navigate to `localhost:5000`.
 
+Login with username: `Samuel`, `Jeressia`, `Silvestre`, or `Lwam`
+
 
 # Author 
        
